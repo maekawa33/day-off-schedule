@@ -50,7 +50,7 @@
   figma: (https://www.figma.com/file/T2j3sOWYwK3OnzkLfR9b6m/PF_schedule?node-id=0%3A1&t=67g3pDXP0cE2PSWc-1)
 
 ## ER図
- ![ER図](er_diagram.png)
+ [![Image from Gyazo](https://i.gyazo.com/6075985e6be58037508f542fa2ad7c07.png)](https://gyazo.com/6075985e6be58037508f542fa2ad7c07)
 
 ## スケジュール  
 企画〜技術調査：12/1〆切  
