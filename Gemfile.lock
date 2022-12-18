@@ -72,7 +72,9 @@ GEM
     builder (3.2.4)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    date (3.3.1)
+    cssbundling-rails (1.1.2)
+      railties (>= 6.0.0)
+    date (3.3.2)
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -194,6 +196,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  cssbundling-rails
   debug
   html2slim
   jbuilder
