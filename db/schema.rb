@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_19_061947) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_19_062133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,6 +37,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_19_061947) do
     t.index ["schedule_id"], name: "index_events_on_schedule_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "schedule_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_favorites_on_schedule_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "schedules", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
@@ -61,5 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_19_061947) do
 
   add_foreign_key "authentications", "users"
   add_foreign_key "events", "schedules"
+  add_foreign_key "favorites", "schedules"
+  add_foreign_key "favorites", "users"
   add_foreign_key "schedules", "users"
 end
