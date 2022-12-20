@@ -64,7 +64,5 @@ group :development do
   # gem "spring"
 end
 
-gem 'slim-rails'
-gem 'html2slim'
 
 gem 'sorcery'
