@@ -1,0 +1,28 @@
+<div class="field px-10">
+    <%=f.text_field :schedule_title, placeholder: "スケジュールタイトル", class: "input input-bordered input-primary w-full max-w-xs"%>
+    <%=f.label :assumed_number_people%>
+    <%=f.number_field :assumed_number_people%>
+</div>
+
+<div class="details">
+   
+    <%= f.fields_for :events do |kf|%>
+        <%render 'get_up', kf: kf%>
+    <% end %>
+
+    <div id="under-event-form"> 
+        <%= f.fields_for :events do |kf|%>
+            <%render 'event_fields', kf: kf%>
+        <% end %>  
+    </div>
+
+    <div class="btn btn-primary">
+        <%= render 'add_event_fields', f: f%>
+    </div>
+
+    <%= f.fields_for :events do |kf|%>
+        <%render 'sleep', kf: kf%>
+    <% end %>
+    
+</div>
+<%=f.submit "作成", class: "btn btn-primary"%>

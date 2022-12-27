@@ -66,3 +66,5 @@ end
 
 
 gem 'sorcery'
+
+gem 'cocoon'
