@@ -33,7 +33,7 @@ class SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule).permit(
       :schedule_title, :assumed_number_people, 
-      events_attributes: [:id, :start_time, :end_time, :event_title, 
+      events_attributes: [:id, :three_main_events, :start_time, :end_time, :event_title, 
                           :image, :price, :store, :comment, :_destroy]
     )
   end
