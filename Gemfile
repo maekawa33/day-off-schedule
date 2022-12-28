@@ -68,3 +68,5 @@ end
 gem 'sorcery'
 
 gem 'cocoon'
+
+gem 'carrierwave'
