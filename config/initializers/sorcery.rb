@@ -4,7 +4,7 @@
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
 # :magic_login, :external
-Rails.application.config.sorcery.submodules = []
+Rails.application.config.sorcery.submodules = [:external]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -15,6 +15,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   # config.not_authenticated_action =
 
+ 
   # When a non logged-in user tries to enter a page that requires login, save
   # the URL he wants to reach, and send him there after login, using 'redirect_back_or_to'.
   # Default: `true`
@@ -80,7 +81,7 @@ Rails.application.config.sorcery.configure do |config|
   # i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce, :slack, :line].
   # Default: `[]`
   #
-  # config.external_providers =
+   config.external_providers = [:twitter]
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
   # Path to ca_file. By default use a internal ca-bundle.crt.
@@ -102,7 +103,17 @@ Rails.application.config.sorcery.configure do |config|
   # }
   # config.linkedin.scope = "r_liteprofile r_emailaddress"
   #
-  #
+  # config.external_providers = [:twitter]
+  config.twitter.key = ENV['twitter_key']
+  config.twitter.secret = ENV['twitter_secret_key']
+  config.twitter.callback_url = Settings.sorcery[:callback_url]
+  config.twitter.user_info_path = "/1.1/account/verify_credentials.json?include_email=true"
+  config.twitter.user_info_mapping = {
+  email: 'email',
+  name: 'name',
+  introduction: 'description',
+  }
+
   # For information about XING API:
   # - user info fields go to https://dev.xing.com/docs/get/users/me
   #
@@ -315,7 +326,7 @@ Rails.application.config.sorcery.configure do |config|
     # Default: `:remember_me_token_expires_at`
     #
     # user.remember_me_token_expires_at_attribute_name =
-
+   
     # How long in seconds the session length will be
     # Default: `60 * 60 * 24 * 7`
     #
@@ -543,7 +554,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+     user.authentications_class = Authentication
 
     # User's identifier in the `authentications` class.
     # Default: `:user_id`
