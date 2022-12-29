@@ -5,7 +5,17 @@
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
 # :magic_login, :external
 Rails.application.config.sorcery.submodules = [:external]
-
+config.external_providers = [:twitter]
+config.twitter.key = ENV['twitter_key']
+config.twitter.secret = ENV['twitter_secret_key']
+config.twitter.callback_url = Settings.sorcery[:callback_url]
+config.twitter.user_info_path = "/1.1/account/verify_credentials.json?include_email=true"
+config.twitter.user_info_mapping = {
+email: 'email',
+name: 'name',
+introduction: 'description',
+}
+user.authentications_class = Authentication
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|

@@ -70,3 +70,6 @@ gem 'sorcery'
 gem 'cocoon'
 
 gem 'carrierwave'
+
+gem 'config'
+gem 'dotenv-rails'
